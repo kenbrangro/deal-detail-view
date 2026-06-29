@@ -242,7 +242,7 @@
           </div>
           <ul id="taskList" class="space-y-3 text-sm"></ul>
           <p id="taskEmpty" class="hidden py-4 text-center text-sm text-slate-400">No open tasks.</p>
-          <button data-action="task" class="mt-4 w-full rounded-lg border border-dashed border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-500 hover:border-primary hover:text-primary">+ Add task</button>
+          <button data-action="task-panel" class="mt-4 w-full rounded-lg border border-dashed border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-500 hover:border-primary hover:text-primary">+ Add task</button>
         </div>
 
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -282,9 +282,11 @@
     const nid = () => ++uid;
     const state = {
       activities: [
-        { id: nid(), type: 'email', title: 'Estimate sent to Daniel Harmon', body: '', meta: 'Today · 9:42 AM · Carla Núñez' },
         { id: nid(), type: 'call',  title: 'Adjuster approved scope, $21,300', body: 'Connected', meta: 'Jun 24 · 2:15 PM · Carla Núñez' },
-        { id: nid(), type: 'note',  title: 'Homeowner prefers charcoal shingles, available afternoons.', body: '', meta: 'Jun 18 · 11:03 AM · Tom Becker' },
+        { id: nid(), type: 'email', title: 'Inspection scheduled with homeowner', body: '', meta: 'Jun 14 · 8:30 AM · Tom Becker' },
+        { id: nid(), type: 'note',  title: 'Homeowner prefers charcoal shingles, available afternoons.', body: '', meta: 'Today · 9:42 AM · Carla Núñez' },
+        { id: nid(), type: 'email', title: 'Estimate sent to Daniel Harmon', body: '', meta: 'Jun 30 · 4:00 PM · Carla Núñez' },
+        { id: nid(), type: 'sms',   title: 'Reminder: crew arrives 7 AM', body: '', meta: 'Jun 18 · 11:03 AM · Tom Becker' },
       ],
       tasks: [
         { id: nid(), title: 'Follow up on signature', due: '2026-06-30', done: false },
@@ -358,6 +360,7 @@
       email: { width: 'max-w-xl', radius: 'rounded-lg',    header: 'plain',  showClose: true,  footerAlign: 'justify-between', order: 'cancel-first',  cancel: 'link',    primaryColor: 'bg-primary hover:bg-primary-dark' },
       note:  { width: 'max-w-sm', radius: 'rounded-3xl',   header: 'plain',  showClose: true,  footerAlign: 'justify-center',  order: 'cancel-first',  cancel: 'filled',  primaryColor: 'bg-prominent hover:bg-orange-600' },
       task:  { width: 'max-w-md', radius: 'rounded-xl',    header: 'plain',  showClose: true,  footerAlign: 'justify-end',     order: 'cancel-first',  cancel: 'outline', primaryColor: 'bg-primary hover:bg-primary-dark' },
+      task2: { width: 'max-w-lg', radius: 'rounded-md',    header: 'violet', showClose: true,  footerAlign: 'justify-start',   order: 'primary-first', cancel: 'link',    primaryColor: 'bg-prominent hover:bg-orange-600' },
       bare:  { width: 'max-w-lg', radius: 'rounded-2xl',   header: 'plain',  showClose: true,  footerAlign: 'justify-end',     order: 'cancel-first',  cancel: 'outline', primaryColor: 'bg-primary hover:bg-primary-dark' },
     };
 
@@ -456,16 +459,34 @@
       });
     }
 
-    function openTaskModal(existing) {
+    // Two divergent "create task" entry points ask for DIFFERENT fields on purpose.
+    function openTaskModal(source = 'quick', existing) {
       const isEdit = !!existing;
-      openModal(modalShell({
-        v: MODAL_VARIANTS.task,
-        title: isEdit ? 'Edit task' : 'Create task',
-        bodyHtml:
+      const isPanel = source === 'panel' && !isEdit;
+
+      let bodyHtml, variant, title, submitLabel;
+      if (isPanel) {
+        // Bottom-right "+ Add task" — different fields, different modal style than the quick action.
+        variant = MODAL_VARIANTS.task2;
+        title = 'New to-do';
+        submitLabel = 'Add task';
+        const prios = ['Low', 'Medium', 'High'];
+        const people = ['Carla Núñez', 'Tom Becker', 'Becker Crew'];
+        bodyHtml =
+          field('Title', `<input name="title" placeholder="Short description" class="${inputCls}" required />`)
+          + field('Priority', `<select name="priority" class="${inputCls}">${prios.map(p => `<option ${p === 'Medium' ? 'selected' : ''}>${p}</option>`).join('')}</select>`)
+          + field('Assign to', `<select name="assignee" class="${inputCls}">${people.map(p => `<option>${p}</option>`).join('')}</select>`);
+      } else {
+        // Quick-actions bar "Create task" (and edit) — title + due date.
+        variant = MODAL_VARIANTS.task;
+        title = isEdit ? 'Edit task' : 'Create task';
+        submitLabel = isEdit ? 'Save changes' : 'Done';
+        bodyHtml =
           field('Task', `<input name="title" value="${esc(existing?.title)}" placeholder="What needs to be done?" class="${inputCls}" required />`)
-          + field('Fecha de entrega', `<input type="date" name="due" value="${esc(existing?.due)}" class="${inputCls}" />`),
-        submitLabel: isEdit ? 'Save changes' : 'Done',
-      }), MODAL_VARIANTS.task);
+          + field('Fecha de entrega', `<input type="date" name="due" value="${esc(existing?.due)}" class="${inputCls}" />`);
+      }
+
+      openModal(modalShell({ v: variant, title, bodyHtml, submitLabel }), variant);
       bindClose();
       $('modalForm').addEventListener('submit', (e) => {
         e.preventDefault();
@@ -477,6 +498,9 @@
           const tk = state.tasks.find(x => x.id === existing.id);
           tk.title = title; tk.due = due;
           toast('Task updated');
+        } else if (isPanel) {
+          state.tasks.push({ id: nid(), title, due: '', done: false, priority: fd.get('priority'), assignee: fd.get('assignee') });
+          toast('To-do added');
         } else {
           state.tasks.push({ id: nid(), title, due, done: false });
           actionToast('task');
@@ -599,7 +623,7 @@
         tk.done = c.checked; renderTasks();
       }));
       list.querySelectorAll('[data-edit-task]').forEach(b => b.addEventListener('click', () => {
-        openTaskModal(state.tasks.find(x => x.id === +b.dataset.editTask));
+        openTaskModal('quick', state.tasks.find(x => x.id === +b.dataset.editTask));
       }));
       list.querySelectorAll('[data-del-task]').forEach(b => b.addEventListener('click', () => {
         const tk = state.tasks.find(x => x.id === +b.dataset.delTask);
@@ -616,7 +640,8 @@
     // ---------- wire actions bar ----------
     document.querySelectorAll('[data-action]').forEach(b => b.addEventListener('click', () => {
       const a = b.dataset.action;
-      if (a === 'task') openTaskModal();
+      if (a === 'task') openTaskModal('quick');
+      else if (a === 'task-panel') openTaskModal('panel');
       else openActivityModal(a);
     }));
 
