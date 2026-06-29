@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deal · Maple Ave Re-Roof — RoofPilot CRM</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Geist', 'system-ui', 'sans-serif'] },
+          colors: {
+            primary: { DEFAULT: '#0ea5e9', dark: '#0284c7', light: '#e0f2fe' },
+            prominent: { DEFAULT: '#f97316', light: '#ffedd5' },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'Geist', system-ui, sans-serif; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: none; } }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    .animate-pop { animation: pop .16s ease-out; }
+    .animate-fade { animation: fade .12s ease-out; }
+    [data-toast] { animation: pop .2s ease-out; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+  <!-- Top bar -->
+  <header class="sticky top-0 z-30 flex items-center justify-between border-b border-slate-200 bg-white/90 px-6 py-3 backdrop-blur">
+    <div class="flex items-center gap-3 text-sm">
+      <div class="flex size-8 items-center justify-center rounded-lg bg-primary text-white font-bold">RP</div>
+      <nav class="flex items-center gap-2 text-slate-500">
+        <a href="#" class="hover:text-slate-800">Deals</a>
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/></svg>
+        <span class="font-medium text-slate-800">Maple Ave Re-Roof</span>
+      </nav>
+    </div>
+    <button class="rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark">Mark as Won</button>
+  </header>
+
+  <main class="mx-auto max-w-[1400px] px-6 py-6">
+
+    <!-- Deal hero -->
+    <section class="mb-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-2xl font-bold text-slate-900">Maple Ave Re-Roof — Asphalt Shingle</h1>
+            <span class="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-orange-700">Insurance Claim</span>
+          </div>
+          <p class="mt-1 text-sm text-slate-500">
+            Deal #RP-2041 · 1428 Maple Ave, Springfield, IL 62704 · Created Jun 12, 2026
+          </p>
+        </div>
+        <div class="flex items-center gap-8 text-right">
+          <div>
+            <p class="text-xs uppercase tracking-wide text-slate-400">Deal value</p>
+            <p class="text-2xl font-bold text-slate-900">$24,850</p>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-wide text-slate-400">Probability</p>
+            <p class="text-2xl font-bold text-primary">70%</p>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-wide text-slate-400">Est. close</p>
+            <p class="text-lg font-semibold text-slate-700">Jul 15, 2026</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pipeline stepper -->
+      <div class="mt-6 flex items-center gap-1.5 overflow-x-auto">
+        <div class="flex flex-1 items-center gap-2 rounded-l-full bg-primary px-4 py-2 text-sm font-medium text-white">
+          <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m5 13 4 4L19 7"/></svg> Lead
+        </div>
+        <div class="flex flex-1 items-center gap-2 bg-primary px-4 py-2 text-sm font-medium text-white">
+          <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m5 13 4 4L19 7"/></svg> Inspection
+        </div>
+        <div class="flex flex-1 items-center gap-2 bg-primary px-4 py-2 text-sm font-medium text-white">
+          <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m5 13 4 4L19 7"/></svg> Estimate Sent
+        </div>
+        <div class="flex flex-1 items-center gap-2 bg-primary-light px-4 py-2 text-sm font-semibold text-primary-dark ring-2 ring-inset ring-primary">
+          <span class="flex size-2 rounded-full bg-primary"></span> Negotiation
+        </div>
+        <div class="flex flex-1 items-center gap-2 bg-slate-100 px-4 py-2 text-sm font-medium text-slate-400">Contract</div>
+        <div class="flex flex-1 items-center gap-2 rounded-r-full bg-slate-100 px-4 py-2 text-sm font-medium text-slate-400">Won</div>
+      </div>
+    </section>
+
+    <!-- ACTIONS BAR -->
+    <section class="mb-6 flex flex-wrap items-center gap-2 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
+      <span class="px-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Quick actions</span>
+      <button data-action="call" class="group flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 hover:border-primary hover:bg-primary-light/50 hover:text-primary-dark">
+        <span class="flex size-7 items-center justify-center rounded-full bg-emerald-100 text-emerald-600"><svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .948.684l1.498 4.493a1 1 0 0 1-.502 1.21l-2.257 1.13a11 11 0 0 0 5 5l1.13-2.257a1 1 0 0 1 1.21-.502l4.493 1.498a1 1 0 0 1 .684.949V19a2 2 0 0 1-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></span>
+        Log call
+      </button>
+      <button data-action="sms" class="group flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 hover:border-primary hover:bg-primary-light/50 hover:text-primary-dark">
+        <span class="flex size-7 items-center justify-center rounded-full bg-violet-100 text-violet-600"><svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.8 9.8 0 0 1-4-.84L3 20l1.34-3.5A7.6 7.6 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></span>
+        Send SMS
+      </button>
+      <button data-action="email" class="group flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 hover:border-primary hover:bg-primary-light/50 hover:text-primary-dark">
+        <span class="flex size-7 items-center justify-center rounded-full bg-primary-light text-primary-dark"><svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg></span>
+        Send email
+      </button>
+      <div class="mx-1 h-6 w-px bg-slate-200"></div>
+      <button data-action="task" class="group flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 hover:border-primary hover:bg-primary-light/50 hover:text-primary-dark">
+        <span class="flex size-7 items-center justify-center rounded-full bg-prominent-light text-prominent"><svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9 2 2 4-4"/></svg></span>
+        Create task
+      </button>
+      <button data-action="note" class="group flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 hover:border-primary hover:bg-primary-light/50 hover:text-primary-dark">
+        <span class="flex size-7 items-center justify-center rounded-full bg-amber-100 text-amber-600"><svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-5m-1.414-9.414a2 2 0 1 1 2.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></span>
+        Add note
+      </button>
+    </section>
+
+    <!-- 3-column body -->
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-[280px_1fr_300px]">
+
+      <!-- Left -->
+      <aside class="space-y-6">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">Customer</h2>
+          <div class="flex items-center gap-3">
+            <div class="flex size-11 items-center justify-center rounded-lg bg-primary-light text-base font-bold text-primary-dark">DH</div>
+            <div>
+              <p class="font-semibold text-slate-900">Daniel Harmon</p>
+              <p class="text-sm text-slate-500">Homeowner</p>
+            </div>
+          </div>
+          <dl class="mt-4 space-y-2.5 text-sm">
+            <div class="flex items-center gap-2.5 text-slate-600">
+              <svg class="size-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .948.684l1.498 4.493a1 1 0 0 1-.502 1.21l-2.257 1.13a11 11 0 0 0 5 5l1.13-2.257a1 1 0 0 1 1.21-.502l4.493 1.498a1 1 0 0 1 .684.949V19a2 2 0 0 1-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              (217) 555-0192
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-600">
+              <svg class="size-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
+              dharmon@email.com
+            </div>
+          </dl>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">Property</h2>
+          <dl class="space-y-2.5 text-sm">
+            <div class="flex justify-between"><dt class="text-slate-500">Roof type</dt><dd class="font-medium text-slate-800">Gable</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Squares</dt><dd class="font-medium text-slate-800">28 sq</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Pitch</dt><dd class="font-medium text-slate-800">6:12</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Stories</dt><dd class="font-medium text-slate-800">2</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Year built</dt><dd class="font-medium text-slate-800">1998</dd></div>
+          </dl>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">Insurance claim</h2>
+          <dl class="space-y-2.5 text-sm">
+            <div class="flex justify-between"><dt class="text-slate-500">Carrier</dt><dd class="font-medium text-slate-800">State Farm</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Claim #</dt><dd class="font-medium text-slate-800">SF-88-4471</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Adjuster</dt><dd class="font-medium text-slate-800">M. Reyes</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Approved</dt><dd class="font-medium text-emerald-600">$21,300</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Deductible</dt><dd class="font-medium text-slate-800">$2,500</dd></div>
+          </dl>
+        </div>
+      </aside>
+
+      <!-- Center -->
+      <section class="space-y-6">
+        <div class="rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div class="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+            <h2 class="font-semibold text-slate-900">Estimate · Asphalt Shingle Tear-off & Replace</h2>
+            <span class="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-700">Pending signature</span>
+          </div>
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate-100 text-left text-xs uppercase tracking-wide text-slate-400">
+                <th class="px-5 py-2.5 font-medium">Item</th>
+                <th class="px-5 py-2.5 text-right font-medium">Qty</th>
+                <th class="px-5 py-2.5 text-right font-medium">Unit</th>
+                <th class="px-5 py-2.5 text-right font-medium">Total</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-50">
+              <tr><td class="px-5 py-3"><p class="font-medium text-slate-800">Tear-off existing shingles</p><p class="text-xs text-slate-500">Dispose 2 layers</p></td><td class="px-5 py-3 text-right text-slate-600">28 sq</td><td class="px-5 py-3 text-right text-slate-600">$95</td><td class="px-5 py-3 text-right font-medium text-slate-800">$2,660</td></tr>
+              <tr><td class="px-5 py-3"><p class="font-medium text-slate-800">GAF Timberline HDZ shingles</p><p class="text-xs text-slate-500">Charcoal, architectural</p></td><td class="px-5 py-3 text-right text-slate-600">28 sq</td><td class="px-5 py-3 text-right text-slate-600">$420</td><td class="px-5 py-3 text-right font-medium text-slate-800">$11,760</td></tr>
+              <tr><td class="px-5 py-3"><p class="font-medium text-slate-800">Synthetic underlayment</p></td><td class="px-5 py-3 text-right text-slate-600">28 sq</td><td class="px-5 py-3 text-right text-slate-600">$48</td><td class="px-5 py-3 text-right font-medium text-slate-800">$1,344</td></tr>
+              <tr><td class="px-5 py-3"><p class="font-medium text-slate-800">Ridge vent + caps</p></td><td class="px-5 py-3 text-right text-slate-600">82 lf</td><td class="px-5 py-3 text-right text-slate-600">$14</td><td class="px-5 py-3 text-right font-medium text-slate-800">$1,148</td></tr>
+              <tr><td class="px-5 py-3"><p class="font-medium text-slate-800">Drip edge & flashing</p></td><td class="px-5 py-3 text-right text-slate-600">1 lot</td><td class="px-5 py-3 text-right text-slate-600">$640</td><td class="px-5 py-3 text-right font-medium text-slate-800">$640</td></tr>
+              <tr><td class="px-5 py-3"><p class="font-medium text-slate-800">Labor & cleanup</p></td><td class="px-5 py-3 text-right text-slate-600">1 lot</td><td class="px-5 py-3 text-right text-slate-600">$7,298</td><td class="px-5 py-3 text-right font-medium text-slate-800">$7,298</td></tr>
+            </tbody>
+            <tfoot class="border-t border-slate-100 text-sm">
+              <tr><td colspan="3" class="px-5 py-1.5 text-right text-slate-500">Subtotal</td><td class="px-5 py-1.5 text-right text-slate-700">$24,850</td></tr>
+              <tr><td colspan="3" class="px-5 pb-4 pt-1.5 text-right font-semibold text-slate-900">Total</td><td class="px-5 pb-4 pt-1.5 text-right text-lg font-bold text-slate-900">$24,850</td></tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- ACTIVITY (dynamic) -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div class="mb-5 flex items-center justify-between">
+            <h2 class="font-semibold text-slate-900">Activity <span id="activityCount" class="ml-1 text-sm font-normal text-slate-400"></span></h2>
+            <div id="activityFilters" class="flex gap-1 text-xs">
+              <button data-filter="all" class="rounded-full bg-primary-light px-2.5 py-1 font-medium text-primary-dark">All</button>
+              <button data-filter="note" class="rounded-full px-2.5 py-1 font-medium text-slate-500 hover:bg-slate-100">Notes</button>
+              <button data-filter="call" class="rounded-full px-2.5 py-1 font-medium text-slate-500 hover:bg-slate-100">Calls</button>
+              <button data-filter="sms" class="rounded-full px-2.5 py-1 font-medium text-slate-500 hover:bg-slate-100">SMS</button>
+              <button data-filter="email" class="rounded-full px-2.5 py-1 font-medium text-slate-500 hover:bg-slate-100">Email</button>
+            </div>
+          </div>
+          <ol id="activityList" class="relative space-y-6 border-l border-slate-200 pl-6"></ol>
+          <p id="activityEmpty" class="hidden py-8 text-center text-sm text-slate-400">No activity yet. Use the quick actions above.</p>
+        </div>
+      </section>
+
+      <!-- Right -->
+      <aside class="space-y-6">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">Deal owner</h2>
+          <div class="flex items-center gap-3">
+            <div class="flex size-10 items-center justify-center rounded-lg bg-prominent-light text-sm font-bold text-prominent">CN</div>
+            <div><p class="font-semibold text-slate-900">Carla Núñez</p><p class="text-sm text-slate-500">Sales Rep</p></div>
+          </div>
+          <dl class="mt-4 space-y-2.5 text-sm">
+            <div class="flex justify-between"><dt class="text-slate-500">Source</dt><dd class="font-medium text-slate-800">Storm canvass</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Crew</dt><dd class="font-medium text-slate-800">Becker Team</dd></div>
+          </dl>
+        </div>
+
+        <!-- TASKS (dynamic) -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div class="mb-4 flex items-center justify-between">
+            <h2 class="text-xs font-semibold uppercase tracking-wide text-slate-400">Tasks</h2>
+            <span id="taskCount" class="rounded-full bg-prominent-light px-2 py-0.5 text-xs font-semibold text-prominent">0</span>
+          </div>
+          <ul id="taskList" class="space-y-3 text-sm"></ul>
+          <p id="taskEmpty" class="hidden py-4 text-center text-sm text-slate-400">No open tasks.</p>
+          <button data-action="task" class="mt-4 w-full rounded-lg border border-dashed border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-500 hover:border-primary hover:text-primary">+ Add task</button>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="mb-4 text-xs font-semibold uppercase tracking-wide text-slate-400">Financials</h2>
+          <dl class="space-y-2.5 text-sm">
+            <div class="flex justify-between"><dt class="text-slate-500">Contract value</dt><dd class="font-medium text-slate-800">$24,850</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Material cost</dt><dd class="font-medium text-slate-800">$13,104</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Est. margin</dt><dd class="font-medium text-emerald-600">38%</dd></div>
+            <div class="flex justify-between border-t border-slate-100 pt-2.5"><dt class="text-slate-500">Customer pays</dt><dd class="font-semibold text-slate-900">$2,500</dd></div>
+          </dl>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Modal host -->
+  <div id="modalRoot" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div id="modalBackdrop" class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm animate-fade"></div>
+    <div id="modalCard" class="relative z-10 w-full max-w-lg rounded-2xl bg-white shadow-xl animate-pop"></div>
+  </div>
+
+  <!-- Toast host -->
+  <div id="toastRoot" class="fixed bottom-5 right-5 z-[60] flex flex-col gap-2"></div>
+
+  <script>
+  (() => {
+    // ---------- meta per activity type ----------
+    const TYPES = {
+      call:  { label: 'Call',  pillBg: 'bg-emerald-100', pillText: 'text-emerald-600', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .948.684l1.498 4.493a1 1 0 0 1-.502 1.21l-2.257 1.13a11 11 0 0 0 5 5l1.13-2.257a1 1 0 0 1 1.21-.502l4.493 1.498a1 1 0 0 1 .684.949V19a2 2 0 0 1-2 2h-1C9.716 21 3 14.284 3 6V5z"/>' },
+      sms:   { label: 'SMS',   pillBg: 'bg-violet-100',  pillText: 'text-violet-600',  icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.8 9.8 0 0 1-4-.84L3 20l1.34-3.5A7.6 7.6 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>' },
+      email: { label: 'Email', pillBg: 'bg-primary-light', pillText: 'text-primary-dark', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/>' },
+      note:  { label: 'Note',  pillBg: 'bg-amber-100',   pillText: 'text-amber-600',   icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-5m-1.414-9.414a2 2 0 1 1 2.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>' },
+    };
+
+    // ---------- state ----------
+    let uid = 100;
+    const nid = () => ++uid;
+    const state = {
+      activities: [
+        { id: nid(), type: 'email', title: 'Estimate sent to Daniel Harmon', body: '', meta: 'Today · 9:42 AM · Carla Núñez' },
+        { id: nid(), type: 'call',  title: 'Adjuster approved scope, $21,300', body: 'Connected', meta: 'Jun 24 · 2:15 PM · Carla Núñez' },
+        { id: nid(), type: 'note',  title: 'Homeowner prefers charcoal shingles, available afternoons.', body: '', meta: 'Jun 18 · 11:03 AM · Tom Becker' },
+      ],
+      tasks: [
+        { id: nid(), title: 'Follow up on signature', due: '2026-06-30', done: false },
+        { id: nid(), title: 'Schedule material drop', due: '2026-07-10', done: false },
+      ],
+      filter: 'all',
+    };
+
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+    const $ = (id) => document.getElementById(id);
+
+    // ---------- toast ----------
+    function toastContainer(pos) {
+      const id = 'tc-' + pos;
+      let c = document.getElementById(id);
+      if (c) return c;
+      c = document.createElement('div');
+      c.id = id;
+      const posCls = {
+        br: 'bottom-5 right-5 items-end',
+        bl: 'bottom-5 left-5 items-start',
+        bc: 'bottom-5 left-1/2 -translate-x-1/2 items-center',
+        tr: 'top-5 right-5 items-end',
+        tc: 'top-5 left-1/2 -translate-x-1/2 items-center',
+      }[pos];
+      c.className = `fixed z-[60] flex flex-col gap-2 ${posCls}`;
+      document.body.appendChild(c);
+      return c;
+    }
+
+    const TOAST_ICONS = {
+      check: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m5 13 4 4L19 7"/>',
+      mail: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/>',
+    };
+
+    // Each quick action shows a confirmation toast — intentionally NOT sharing a single style.
+    const TOAST_STYLES = {
+      call:  { pos: 'br', ms: 2400, icon: null,    cls: 'bg-slate-900 text-white rounded-full px-4 py-2.5 text-sm font-medium shadow-lg',                              text: 'Call logged.' },
+      sms:   { pos: 'tc', ms: 4200, icon: 'check', cls: 'bg-white text-slate-800 border-l-4 border-emerald-500 rounded-md px-5 py-3 text-sm shadow-md',                  text: 'Message sent successfully!' },
+      email: { pos: 'bl', ms: 1500, icon: 'mail',  cls: 'bg-primary text-white rounded-xl px-4 py-2 text-xs font-bold uppercase tracking-wide shadow-lg',               text: 'Email sent' },
+      note:  { pos: 'tr', ms: 3000, icon: null,    cls: 'bg-amber-100 text-amber-800 rounded-sm px-3 py-2 text-sm shadow',                                             text: 'note added' },
+      task:  { pos: 'bc', ms: 5000, icon: null,    cls: 'bg-emerald-500 text-white rounded-2xl px-5 py-3 text-sm font-semibold shadow-xl',                              text: 'Task has been created \u{1F389}' },
+    };
+
+    function actionToast(type) {
+      const s = TOAST_STYLES[type];
+      const el = document.createElement('div');
+      el.setAttribute('data-toast', '');
+      el.className = `flex items-center gap-2 ${s.cls}`;
+      el.innerHTML = (s.icon ? `<svg class="size-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">${TOAST_ICONS[s.icon]}</svg>` : '') + `<span>${s.text}</span>`;
+      toastContainer(s.pos).appendChild(el);
+      setTimeout(() => { el.style.transition = 'opacity .3s'; el.style.opacity = '0'; setTimeout(() => el.remove(), 300); }, s.ms);
+    }
+
+    // generic toast for edit / delete feedback
+    function toast(msg, tone = 'ok') {
+      const colors = { ok: 'bg-slate-900', warn: 'bg-prominent', err: 'bg-red-600' };
+      const el = document.createElement('div');
+      el.setAttribute('data-toast', '');
+      el.className = `${colors[tone]} flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-white shadow-lg`;
+      el.textContent = msg;
+      toastContainer('br').appendChild(el);
+      setTimeout(() => { el.style.transition = 'opacity .3s'; el.style.opacity = '0'; setTimeout(() => el.remove(), 300); }, 2400);
+    }
+
+    // ---------- modal ----------
+    // Per-type modal profiles — deliberately divergent (width, radius, header, close, footer, cancel, primary color).
+    const MODAL_VARIANTS = {
+      call:  { width: 'max-w-lg', radius: 'rounded-2xl',  header: 'plain',  showClose: true,  footerAlign: 'justify-end',     order: 'primary-first', cancel: 'outline', primaryColor: 'bg-primary hover:bg-primary-dark' },
+      sms:   { width: 'max-w-md', radius: 'rounded-none',  header: 'violet', showClose: false, footerAlign: 'justify-end',     order: 'cancel-first',  cancel: 'outline', primaryColor: 'bg-emerald-500 hover:bg-emerald-600' },
+      email: { width: 'max-w-xl', radius: 'rounded-lg',    header: 'plain',  showClose: true,  footerAlign: 'justify-between', order: 'cancel-first',  cancel: 'link',    primaryColor: 'bg-primary hover:bg-primary-dark' },
+      note:  { width: 'max-w-sm', radius: 'rounded-3xl',   header: 'plain',  showClose: true,  footerAlign: 'justify-center',  order: 'cancel-first',  cancel: 'filled',  primaryColor: 'bg-prominent hover:bg-orange-600' },
+      task:  { width: 'max-w-md', radius: 'rounded-xl',    header: 'plain',  showClose: true,  footerAlign: 'justify-end',     order: 'cancel-first',  cancel: 'outline', primaryColor: 'bg-primary hover:bg-primary-dark' },
+      bare:  { width: 'max-w-lg', radius: 'rounded-2xl',   header: 'plain',  showClose: true,  footerAlign: 'justify-end',     order: 'cancel-first',  cancel: 'outline', primaryColor: 'bg-primary hover:bg-primary-dark' },
+    };
+
+    const root = $('modalRoot'), card = $('modalCard');
+    function openModal(html, variant = MODAL_VARIANTS.bare) {
+      card.className = `relative z-10 w-full ${variant.width} ${variant.radius} bg-white shadow-xl animate-pop overflow-hidden`;
+      card.innerHTML = html;
+      root.classList.remove('hidden');
+      root.classList.add('flex');
+      const first = card.querySelector('input, textarea, select');
+      if (first) setTimeout(() => first.focus(), 30);
+    }
+    function closeModal() { root.classList.add('hidden'); root.classList.remove('flex'); card.innerHTML = ''; }
+    $('modalBackdrop').addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !root.classList.contains('hidden')) closeModal(); });
+
+    function field(label, inner) {
+      return `<label class="block"><span class="mb-1 block text-sm font-medium text-slate-700">${label}</span>${inner}</label>`;
+    }
+    const inputCls = 'w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/30';
+
+    function modalShell({ title, bodyHtml, submitLabel, v }) {
+      v = v || MODAL_VARIANTS.bare;
+      const closeBtn = `<button type="button" data-close class="rounded-lg p-1.5 ${v.header === 'violet' ? 'text-white/80 hover:bg-white/20 hover:text-white' : 'text-slate-400 hover:bg-slate-100 hover:text-slate-700'}"><svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6M6 6l12 12"/></svg></button>`;
+      const header = v.header === 'violet'
+        ? `<div class="flex items-center justify-between bg-violet-600 px-5 py-4"><h3 class="text-lg font-semibold text-white">${title}</h3>${v.showClose ? closeBtn : ''}</div>`
+        : `<div class="flex items-center justify-between border-b border-slate-100 px-5 py-4"><h3 class="text-lg font-semibold text-slate-900">${title}</h3>${v.showClose ? closeBtn : ''}</div>`;
+
+      const cancelCls = {
+        outline: 'rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50',
+        link:    'px-2 py-2 text-sm font-medium text-slate-500 underline underline-offset-2 hover:text-slate-700',
+        filled:  'rounded-lg bg-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-300',
+      }[v.cancel];
+      const cancelBtn = `<button type="button" data-close class="${cancelCls}">Cancel</button>`;
+      const submitBtn = `<button type="submit" class="rounded-lg ${v.primaryColor} px-4 py-2 text-sm font-semibold text-white shadow-sm">${submitLabel}</button>`;
+      const footerInner = v.order === 'primary-first' ? submitBtn + cancelBtn : cancelBtn + submitBtn;
+
+      return `
+        <form id="modalForm" class="flex flex-col">
+          ${header}
+          <div class="space-y-4 px-5 py-5">${bodyHtml}</div>
+          <div class="flex ${v.footerAlign} items-center gap-2 border-t border-slate-100 px-5 py-4">${footerInner}</div>
+        </form>`;
+    }
+
+    // ---------- forms per type ----------
+    function activityFormBody(type, data = {}) {
+      if (type === 'call') {
+        const outcomes = ['Connected', 'Voicemail', 'No answer', 'Busy'];
+        return field('Outcome', `<select name="body" class="${inputCls}">${outcomes.map(o => `<option ${data.body === o ? 'selected' : ''}>${o}</option>`).join('')}</select>`)
+          + field('Summary', `<input name="title" value="${esc(data.title)}" placeholder="What was discussed?" class="${inputCls}" required />`);
+      }
+      if (type === 'sms') {
+        return field('To', `<input value="(217) 555-0192" disabled class="${inputCls} bg-slate-50 text-slate-500" />`)
+          + field('Message', `<textarea name="title" rows="4" placeholder="Type your text message…" class="${inputCls}" required>${esc(data.title)}</textarea>`);
+      }
+      if (type === 'email') {
+        return field('To', `<input value="dharmon@email.com" disabled class="${inputCls} bg-slate-50 text-slate-500" />`)
+          + field('Subject', `<input name="title" value="${esc(data.title)}" placeholder="Subject line" class="${inputCls}" required />`)
+          + field('Body', `<textarea name="body" rows="4" placeholder="Write your email…" class="${inputCls}">${esc(data.body)}</textarea>`);
+      }
+      // note
+      return field('Note', `<textarea name="title" rows="4" placeholder="Write a note about this deal…" class="${inputCls}" required>${esc(data.title)}</textarea>`);
+    }
+
+    // Intentionally inconsistent create titles + submit-label casing across types.
+    const CREATE_TITLE = { call: 'Log call', sms: 'Send SMS', email: 'Compose Email', note: 'ADD NOTE' };
+    const SUBMIT_LABEL = { call: 'Log call', sms: 'Send', email: 'SUBMIT', note: 'Save' };
+
+    function openActivityModal(type, existing) {
+      const t = TYPES[type];
+      const isEdit = !!existing;
+      openModal(modalShell({
+        v: MODAL_VARIANTS[type],
+        title: isEdit ? `Edit ${t.label.toLowerCase()}` : CREATE_TITLE[type],
+        bodyHtml: activityFormBody(type, existing || {}),
+        submitLabel: isEdit ? 'Save changes' : SUBMIT_LABEL[type],
+      }), MODAL_VARIANTS[type]);
+      bindClose();
+      $('modalForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const title = (fd.get('title') || '').toString().trim();
+        const body = (fd.get('body') || '').toString().trim();
+        if (!title) return;
+        if (isEdit) {
+          const a = state.activities.find(x => x.id === existing.id);
+          a.title = title; a.body = body;
+          toast(`${t.label} updated`);
+        } else {
+          state.activities.unshift({ id: nid(), type, title, body, meta: `${nowMeta()} · Carla Núñez` });
+          actionToast(type);
+        }
+        closeModal();
+        renderActivities();
+      });
+    }
+
+    function openTaskModal(existing) {
+      const isEdit = !!existing;
+      openModal(modalShell({
+        v: MODAL_VARIANTS.task,
+        title: isEdit ? 'Edit task' : 'Create task',
+        bodyHtml:
+          field('Task', `<input name="title" value="${esc(existing?.title)}" placeholder="What needs to be done?" class="${inputCls}" required />`)
+          + field('Fecha de entrega', `<input type="date" name="due" value="${esc(existing?.due)}" class="${inputCls}" />`),
+        submitLabel: isEdit ? 'Save changes' : 'Done',
+      }), MODAL_VARIANTS.task);
+      bindClose();
+      $('modalForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const title = (fd.get('title') || '').toString().trim();
+        const due = (fd.get('due') || '').toString();
+        if (!title) return;
+        if (isEdit) {
+          const tk = state.tasks.find(x => x.id === existing.id);
+          tk.title = title; tk.due = due;
+          toast('Task updated');
+        } else {
+          state.tasks.push({ id: nid(), title, due, done: false });
+          actionToast('task');
+        }
+        closeModal();
+        renderTasks();
+      });
+    }
+
+    // Two intentionally different confirm patterns: 'destructive' (icon-left, red, buttons right)
+    // vs 'soft' (centered, blue confirm, stacked full-width buttons).
+    function openConfirm({ title, message, confirmLabel, onConfirm, style = 'destructive' }) {
+      if (style === 'soft') {
+        openModal(`
+          <div class="p-6 text-center">
+            <div class="mx-auto mb-3 flex size-12 items-center justify-center rounded-full bg-primary-light text-primary-dark"><svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 7-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3M4 7h16"/></svg></div>
+            <h3 class="text-base font-bold text-slate-900">${title}</h3>
+            <p class="mt-1 text-sm text-slate-500">${message}</p>
+            <div class="mt-6 flex flex-col gap-2">
+              <button type="button" id="confirmBtn" class="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark">${confirmLabel}</button>
+              <button type="button" data-close class="w-full rounded-lg bg-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-300">Cancel</button>
+            </div>
+          </div>`, MODAL_VARIANTS.note);
+      } else {
+        openModal(`
+          <div class="p-5">
+            <div class="flex items-start gap-3">
+              <div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600"><svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m0 3.75h.008M10.34 3.34l-7.5 13A1.5 1.5 0 0 0 4.14 19h15.72a1.5 1.5 0 0 0 1.3-2.25l-7.5-13a1.5 1.5 0 0 0-2.6 0z"/></svg></div>
+              <div>
+                <h3 class="text-lg font-semibold text-slate-900">${title}</h3>
+                <p class="mt-1 text-sm text-slate-500">${message}</p>
+              </div>
+            </div>
+            <div class="mt-6 flex justify-end gap-2">
+              <button type="button" data-close class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Cancel</button>
+              <button type="button" id="confirmBtn" class="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-700">${confirmLabel}</button>
+            </div>
+          </div>`, MODAL_VARIANTS.bare);
+      }
+      bindClose();
+      $('confirmBtn').addEventListener('click', () => { onConfirm(); closeModal(); });
+    }
+
+    function bindClose() {
+      card.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeModal));
+    }
+
+    function nowMeta() {
+      // static label to keep the prototype deterministic
+      return 'Just now';
+    }
+
+    // ---------- render ----------
+    function renderActivities() {
+      const list = $('activityList');
+      const items = state.activities.filter(a => state.filter === 'all' || a.type === state.filter);
+      $('activityCount').textContent = state.activities.length ? `(${state.activities.length})` : '';
+      $('activityEmpty').classList.toggle('hidden', items.length > 0);
+      list.classList.toggle('hidden', items.length === 0);
+      list.innerHTML = items.map(a => {
+        const t = TYPES[a.type];
+        const sub = a.body ? `<p class="mt-0.5 text-sm text-slate-500">${esc(a.body)}</p>` : '';
+        return `
+          <li class="group relative">
+            <span class="absolute -left-[31px] flex size-6 items-center justify-center rounded-full ${t.pillBg} ring-4 ring-white">
+              <svg class="size-3.5 ${t.pillText}" fill="none" stroke="currentColor" viewBox="0 0 24 24">${t.icon}</svg>
+            </span>
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <p class="text-sm text-slate-800"><span class="font-semibold">${t.label}</span> — ${esc(a.title)}</p>
+                ${sub}
+                <p class="mt-0.5 text-xs text-slate-400">${esc(a.meta)}</p>
+              </div>
+              <div class="flex shrink-0 gap-1 opacity-0 transition group-hover:opacity-100">
+                <button data-edit-act="${a.id}" class="rounded-md p-1.5 text-slate-400 hover:bg-slate-100 hover:text-primary-dark" title="Edit"><svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-5m-1.414-9.414a2 2 0 1 1 2.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>
+                <button data-del-act="${a.id}" class="rounded-md p-1.5 text-slate-400 hover:bg-red-50 hover:text-red-600" title="Delete"><svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 7-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3M4 7h16"/></svg></button>
+              </div>
+            </div>
+          </li>`;
+      }).join('');
+
+      list.querySelectorAll('[data-edit-act]').forEach(b => b.addEventListener('click', () => {
+        const a = state.activities.find(x => x.id === +b.dataset.editAct);
+        openActivityModal(a.type, a);
+      }));
+      list.querySelectorAll('[data-del-act]').forEach(b => b.addEventListener('click', () => {
+        const a = state.activities.find(x => x.id === +b.dataset.delAct);
+        openConfirm({
+          title: `Delete this ${TYPES[a.type].label.toLowerCase()}?`,
+          message: 'This activity will be removed from the deal. This cannot be undone.',
+          confirmLabel: 'Delete',
+          onConfirm: () => { state.activities = state.activities.filter(x => x.id !== a.id); toast(`${TYPES[a.type].label} deleted`, 'warn'); renderActivities(); },
+        });
+      }));
+    }
+
+    function renderTasks() {
+      const list = $('taskList');
+      const open = state.tasks.filter(t => !t.done).length;
+      $('taskCount').textContent = open;
+      $('taskEmpty').classList.toggle('hidden', state.tasks.length > 0);
+      list.innerHTML = state.tasks.map(t => {
+        const dueLabel = t.due ? new Date(t.due + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'No due date';
+        return `
+          <li class="group flex items-start gap-3">
+            <input type="checkbox" data-toggle="${t.id}" ${t.done ? 'checked' : ''} class="mt-0.5 size-4 rounded border-slate-300 text-primary focus:ring-primary" />
+            <div class="min-w-0 flex-1">
+              <p class="${t.done ? 'text-slate-400 line-through' : 'text-slate-800'}">${esc(t.title)}</p>
+              <p class="text-xs ${t.done ? 'text-slate-300' : 'text-slate-400'}">Due ${dueLabel}</p>
+            </div>
+            <div class="flex shrink-0 gap-1 opacity-0 transition group-hover:opacity-100">
+              <button data-edit-task="${t.id}" class="rounded-md p-1 text-slate-400 hover:bg-slate-100 hover:text-primary-dark" title="Edit"><svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-5m-1.414-9.414a2 2 0 1 1 2.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>
+              <button data-del-task="${t.id}" class="rounded-md p-1 text-slate-400 hover:bg-red-50 hover:text-red-600" title="Delete"><svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 7-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3M4 7h16"/></svg></button>
+            </div>
+          </li>`;
+      }).join('');
+
+      list.querySelectorAll('[data-toggle]').forEach(c => c.addEventListener('change', () => {
+        const tk = state.tasks.find(x => x.id === +c.dataset.toggle);
+        tk.done = c.checked; renderTasks();
+      }));
+      list.querySelectorAll('[data-edit-task]').forEach(b => b.addEventListener('click', () => {
+        openTaskModal(state.tasks.find(x => x.id === +b.dataset.editTask));
+      }));
+      list.querySelectorAll('[data-del-task]').forEach(b => b.addEventListener('click', () => {
+        const tk = state.tasks.find(x => x.id === +b.dataset.delTask);
+        openConfirm({
+          style: 'soft',
+          title: 'Remove task',
+          message: `Are you sure you want to remove “${esc(tk.title)}”?`,
+          confirmLabel: 'Yes, remove it',
+          onConfirm: () => { state.tasks = state.tasks.filter(x => x.id !== tk.id); toast('Task deleted', 'warn'); renderTasks(); },
+        });
+      }));
+    }
+
+    // ---------- wire actions bar ----------
+    document.querySelectorAll('[data-action]').forEach(b => b.addEventListener('click', () => {
+      const a = b.dataset.action;
+      if (a === 'task') openTaskModal();
+      else openActivityModal(a);
+    }));
+
+    // ---------- wire activity filters ----------
+    $('activityFilters').querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => {
+      state.filter = b.dataset.filter;
+      $('activityFilters').querySelectorAll('[data-filter]').forEach(x => {
+        const on = x.dataset.filter === state.filter;
+        x.className = `rounded-full px-2.5 py-1 font-medium ${on ? 'bg-primary-light text-primary-dark' : 'text-slate-500 hover:bg-slate-100'}`;
+      });
+      renderActivities();
+    }));
+
+    // ---------- init ----------
+    renderActivities();
+    renderTasks();
+  })();
+  </script>
+</body>
+</html>
